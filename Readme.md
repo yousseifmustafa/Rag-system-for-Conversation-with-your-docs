@@ -185,3 +185,10 @@ A new tab should automatically open in your web browser at `http://localhost:850
 4.  Once processing is complete, use the chat box at the bottom of the main screen to start asking questions about your documents!
 
 ---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+Created with ❤️ by **[Youssef Mustafa](https://github.com/yousseifmustafa)** © 2025
+
