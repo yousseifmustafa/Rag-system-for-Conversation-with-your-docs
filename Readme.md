@@ -15,26 +15,31 @@ An end-to-end, cloud-first RAG application that transforms multiple documents in
 ### System Architecture
 ```mermaid
 graph TD
-    A["User Uploads Files <br> (PDF, DOCX, TXT)"] --> B("Text Extraction <br> PyMuPDF, ftfy");
-    B --> C("Semantic Chunking");
-    C --> D("Embedding Model <br> E5-Small");
-    D --> E{"Vector Database"};
-    E -- Cloud-First --> F["Zilliz Cloud"];
-    E -- Fallback --> G["Local ChromaDB"];
-    
-    subgraph RAG Pipeline
-        H["User Asks Question"] --> I(Retriever);
-        I -- Fetches Context --> E;
-        J["Chat History"] --> K("Prompt Formatting");
-        I --> K;
-        H --> K;
-        K --> L("LLM - Llama 3 <br> on Hugging Face");
-        L --> M["Generated Answer"];
+    subgraph "1. Data Ingestion Pipeline (One-Time Process per File)"
+        A["User Uploads Files <br> (PDF, DOCX, TXT)"] --> B("Text Extraction & Cleaning <br> PyMuPDF, ftfy");
+        B --> C("Semantic Chunking");
+        C --> D("Embedding Model <br> E5-Small");
+        D --"sends chunks to be stored"--> E{"Vector Database <br> (Zilliz / Chroma)"};
     end
 
-    M --> N["Streamlit UI"];
-    subgraph Sources
-        I -- Provides sources to --> N;
+    subgraph "2. Live RAG Pipeline (For Every User Question)"
+        H["User Asks Question <br> (via Streamlit UI)"]
+        
+        H --> I(Retriever);
+        I -- "1. Sends search query" --> E;
+        E -- "2. Returns relevant documents (context)" --> I;
+        
+        J["Chat History"] --> K("Prompt Formatting");
+        I -- "3. Provides context" --> K;
+        H -- "4. Provides user question" --> K;
+        
+        K -- "5. Creates Final Prompt" --> L("LLM - Llama 3 <br> on Hugging Face");
+        L -- "6. Returns Generated Answer" --> M["Final Response"];
+    end
+
+    subgraph "3. UI Display"
+        M -- "Displays Answer" --> N["Streamlit UI"];
+        I -- "Provides Sources for Citation" --> N;
     end
 ```
 
