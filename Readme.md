@@ -15,26 +15,26 @@ An end-to-end, cloud-first RAG application that transforms multiple documents in
 ### System Architecture
 ```mermaid
 graph TD
-    A[User Uploads Files <br> (PDF, DOCX, TXT)] --> B(Text Extraction <br> PyMuPDF, ftfy);
-    B --> C(Semantic Chunking);
-    C --> D(Embedding Model <br> E5-Small);
-    D --> E{Vector Database};
-    E -- Cloud-First --> F[Zilliz Cloud];
-    E -- Fallback --> G[Local ChromaDB];
+    A["User Uploads Files <br> (PDF, DOCX, TXT)"] --> B("Text Extraction <br> PyMuPDF, ftfy");
+    B --> C("Semantic Chunking");
+    C --> D("Embedding Model <br> E5-Small");
+    D --> E{"Vector Database"};
+    E -- Cloud-First --> F["Zilliz Cloud"];
+    E -- Fallback --> G["Local ChromaDB"];
     
     subgraph RAG Pipeline
-        H[User Asks Question] --> I(Retriever);
+        H["User Asks Question"] --> I(Retriever);
         I -- Fetches Context --> E;
-        J[Chat History] --> K(Prompt Formatting);
+        J["Chat History"] --> K("Prompt Formatting");
         I --> K;
         H --> K;
-        K --> L(LLM - Llama 3 <br> on Hugging Face);
-        L --> M[Generated Answer];
+        K --> L("LLM - Llama 3 <br> on Hugging Face");
+        L --> M["Generated Answer"];
     end
 
-    M --> N(Streamlit UI);
+    M --> N["Streamlit UI"];
     subgraph Sources
-        I --> N;
+        I -- Provides sources to --> N;
     end
 ```
 
