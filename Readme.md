@@ -1,11 +1,14 @@
 # Advanced RAG System for Conversational Document Analysis
 
 
-![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue)
-![LangChain](https://img.shields.io/badge/LangChain-Powered-green)
-![Streamlit](https://img.shields.io/badge/UI-Streamlit-orange)
-
-
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
+![LangChain](https://img.shields.io/badge/LangChain-Powered-green?logo=langchain)
+![Streamlit](https://img.shields.io/badge/UI-Streamlit-orange?logo=streamlit)
+![Hugging Face](https://img.shields.io/badge/Models-Hugging_Face-yellow?logo=huggingface)
+![Zilliz](https://img.shields.io/badge/Vector_DB-Zilliz_Cloud-blueviolet?logo=zilliz)
+![ChromaDB](https://img.shields.io/badge/Fallback_DB-Chroma-ef0172?logo=chroma)
+![PyMuPDF](https://img.shields.io/badge/PDF_Parser-PyMuPDF-red)
+![GitHub](https://img.shields.io/badge/Repo-GitHub-181717?logo=github)
 
 An end-to-end, cloud-first RAG application that transforms multiple documents into a persistent, intelligent, and interactive knowledge base, complete with a robust local fallback system and source-cited answers for trustworthiness.
 
