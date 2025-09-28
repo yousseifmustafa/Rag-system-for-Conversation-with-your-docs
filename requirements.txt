@@ -5,12 +5,11 @@ langchain-huggingface
 langchain-experimental
 langchain-chroma
 langchain-milvus
-pymilvus==2.3.0
-grpcio==1.59.0
-grpcio-tools==1.59.0
+pymilvus
+grpcio
+grpcio-tools
 sentence-transformers
 torch
-huggingface-hub
 PyMuPDF
 python-docx
 ftfy
