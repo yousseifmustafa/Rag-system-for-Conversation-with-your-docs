@@ -198,5 +198,7 @@ A new tab should automatically open in your web browser at `http://localhost:850
 
 This project is licensed under the MIT License.
 
-Created with ❤️ by **[Youssef Mustafa](https://github.com/yousseifmustafa)** © 2025
-
+---
+<div align="right">
+    Made with ❤️ by <a href="https://github.com/yousseifmustafa">Yousseif Mustafa</a>
+</div>
